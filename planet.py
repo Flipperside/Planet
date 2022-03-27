@@ -1,7 +1,7 @@
 import pygame
 
 
-class Planet():
+class Planet:
 
     def __init__(self, screen):
 

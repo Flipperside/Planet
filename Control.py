@@ -7,33 +7,37 @@ def events(sun):
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            #Право
+            #ВПраво
             if event.key == pygame.K_d:
                 sun.right = True
-            #Лево
+            #ВЛево
             if event.key == pygame.K_a:
                 sun.left = True
             #Вверх
             if event.key == pygame.K_w:
                 sun.up = True
+            #Вниз
             if event.key == pygame.K_s:
                 sun.down = True
         elif event.type == pygame.KEYUP:
-            #Право
+            #ВПраво
             if event.key == pygame.K_d:
                 sun.right = False
-            #Лево
+            #ВЛево
             if event.key == pygame.K_a:
                 sun.left = False
-            # Вверх
+            #Вверх
             if event.key == pygame.K_w:
                 sun.up = False
+            #Вниз
             if event.key == pygame.K_s:
                 sun.down = False
 
 
-def update(bg_color, screen, sun, planet):
+def update(bg_color, screen, asteroid, sun, planet):
     screen.fill(bg_color)
     planet.output()
     sun.output()
+    asteroid.output()
     pygame.display.flip()
+
