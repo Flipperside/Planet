@@ -1,5 +1,6 @@
 import pygame
 import sys
+from asteroid import Asteroid
 
 
 def events(sun):
@@ -34,10 +35,21 @@ def events(sun):
                 sun.down = False
 
 
-def update(bg_color, screen, asteroid, sun, planet):
+def spawn(time, screen, asteroids):
+    if time % 300 == 0:
+        new_aster = Asteroid(screen)
+        asteroids.add(new_aster)
+
+
+def update(bg_color, screen, asteroids, sun, planet):
     screen.fill(bg_color)
+    for asteroid in asteroids.sprites():
+        asteroid.output()
     planet.output()
     sun.output()
-    asteroid.output()
     pygame.display.flip()
+
+
+def update_asteroid(asteroids):
+    asteroids.update()
 
