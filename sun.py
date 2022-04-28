@@ -20,10 +20,8 @@ class Sun(pygame.sprite.Sprite):
         self.down = False
         self.speed = 3
 
-
     def output(self):
         self.screen.blit(self.image, self.rect)
-
 
     def update_sun(self):
 

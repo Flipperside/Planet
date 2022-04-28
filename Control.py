@@ -41,17 +41,23 @@ def spawn(time, screen, asteroids):
         asteroids.add(new_aster)
 
 
-def update(bg_color, screen, asteroids, sun, planet):
+def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts):
     screen.fill(bg_color)
+    hp.show_life()
     for asteroid in asteroids.sprites():
         asteroid.output()
     planet.output()
     sun.output()
+    hearts.output()
     pygame.display.flip()
 
 
-def update_asteroid(asteroids, sun):
+def update_asteroid(asteroids, sun, planet, stats, hp):
     asteroids.update()
-    hit = pygame.sprite.spritecollide(sun, asteroids, True)
-    print(hit)
+    pygame.sprite.spritecollide(sun, asteroids, True)
+    if pygame.sprite.spritecollide(planet, asteroids, True):
+        stats.life -= 1
+        hp.image_life()
+
+
 

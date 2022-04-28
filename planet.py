@@ -1,9 +1,10 @@
 import pygame
 
 
-class Planet:
+class Planet(pygame.sprite.Sprite):
 
     def __init__(self, screen):
+        super(Planet, self).__init__()
 
         self.screen = screen
         self.image = pygame.image.load('images/planet.png')
