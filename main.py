@@ -21,7 +21,7 @@ def run():
         Control.spawn(time, screen, asteroids)
         Control.events(sun)
         sun.update_sun()
-        Control.update_asteroid(asteroids)
+        Control.update_asteroid(asteroids, sun)
         Control.update(bg_color, screen, asteroids, sun, planet)
         clock.tick(FPS)
 

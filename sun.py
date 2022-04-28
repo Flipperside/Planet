@@ -20,8 +20,10 @@ class Sun(pygame.sprite.Sprite):
         self.down = False
         self.speed = 3
 
+
     def output(self):
         self.screen.blit(self.image, self.rect)
+
 
     def update_sun(self):
 
@@ -35,5 +37,6 @@ class Sun(pygame.sprite.Sprite):
             self.center2 += self.speed
         self.rect.centerx = self.center1
         self.rect.centery = self.center2
+
 
 

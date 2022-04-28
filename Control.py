@@ -50,6 +50,8 @@ def update(bg_color, screen, asteroids, sun, planet):
     pygame.display.flip()
 
 
-def update_asteroid(asteroids):
+def update_asteroid(asteroids, sun):
     asteroids.update()
+    hit = pygame.sprite.spritecollide(sun, asteroids, True)
+    print(hit)
 
