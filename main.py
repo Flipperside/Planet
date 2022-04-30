@@ -6,10 +6,25 @@ from pygame.sprite import Group
 from stats import Stats
 from currectLife import Life
 from hearts import Hearts
+from button import Button
+import sys
 FPS = 300
 
 
+def show_menu():
+    bg_menu = pygame.image.load('images/Menu.jpg')
+    show = True
+
+    while show:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        screen.blit(bg_menu, (0, 0))
+
+
 def run():
+    global screen
     pygame.init()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     clock = pygame.time.Clock()
@@ -22,6 +37,7 @@ def run():
     time = 0
     stats = Stats()
     hp = Life(screen, stats)
+    button = Button(100, 50, screen)
 
     while True:
         time += 1
@@ -29,7 +45,7 @@ def run():
         Control.events(sun)
         sun.update_sun()
         Control.update_asteroid(asteroids, sun, planet, stats, hp)
-        Control.update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts)
+        Control.update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button)
         clock.tick(FPS)
         print(stats.life)
 

@@ -41,7 +41,7 @@ def spawn(time, screen, asteroids):
         asteroids.add(new_aster)
 
 
-def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts):
+def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button):
     screen.fill(bg_color)
     hp.show_life()
     for asteroid in asteroids.sprites():
@@ -49,6 +49,7 @@ def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts):
     planet.output()
     sun.output()
     hearts.output()
+    button.draw(100, 100, 'But')
     pygame.display.flip()
 
 
