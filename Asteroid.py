@@ -26,8 +26,7 @@ class Asteroid(pygame.sprite.Sprite):
     def update(self):
         vektorx = 900 - self.x
         vektory = 500 - self.y
-        self.x += vektorx / 1000
-        self.y += vektory / 1000
+        self.x += vektorx / 300
+        self.y += vektory / 300
         self.rect.x = self.x
         self.rect.y = self.y
-

@@ -8,11 +8,19 @@ from currectLife import Life
 from hearts import Hearts
 from button import Button
 import sys
+
+
 FPS = 300
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+clock = pygame.time.Clock()
+bg_menu = pygame.image.load('images/Menu.jpg')
 
 
 def show_menu():
-    bg_menu = pygame.image.load('images/Menu.jpg')
+    pygame.init()
+    start = Button(300, 70, screen)
+    rule = Button(300, 70, screen)
+    quit_b = Button(300, 70, screen)
     show = True
 
     while show:
@@ -21,23 +29,27 @@ def show_menu():
                 sys.exit()
 
         screen.blit(bg_menu, (0, 0))
+        start.draw(790, 340, 'Новая игра', run)
+        rule.draw(790, 440, 'Правила')
+        quit_b.draw(790, 540, 'Выйти', quit)
+
+        pygame.display.update()
+        clock.tick(FPS)
 
 
 def run():
     global screen
     pygame.init()
-    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-    clock = pygame.time.Clock()
     pygame.display.set_caption('Space battle')
     bg_color = (0, 0, 0)
     hearts = Hearts(screen)
     planet = Planet(screen)
     sun = Sun(screen)
     asteroids = Group()
-    time = 0
     stats = Stats()
     hp = Life(screen, stats)
     button = Button(100, 50, screen)
+    time = 0
 
     while True:
         time += 1
@@ -50,5 +62,4 @@ def run():
         print(stats.life)
 
 
-run()
-
+show_menu()

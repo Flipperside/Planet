@@ -1,7 +1,7 @@
 import pygame
 
 
-def print_text(massage, x, y, screen, font_color=(0, 0, 0), font_type='arial.ttf', font_size=30):
+def print_text(massage, x, y, screen, font_color=(0, 0, 0), font_type='arial.ttf', font_size=58):
     font_type = pygame.font.Font(font_type, font_size)
     text = font_type.render(massage, True, font_color)
     screen.blit(text, (x, y))
@@ -27,7 +27,11 @@ class Button:
             if click[0] == 1 and action is not None:
                 pygame.mixer.Sound.play(self.button_sound)
                 if action is not None:
-                    action()
+                    if action == quit ():
+                        pygame.quit()
+                        quit()
+                    else:
+                        action()
 
         else:
             pygame.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))

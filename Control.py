@@ -49,7 +49,6 @@ def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button):
     planet.output()
     sun.output()
     hearts.output()
-    button.draw(100, 100, 'But')
     pygame.display.flip()
 
 
