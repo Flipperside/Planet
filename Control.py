@@ -1,9 +1,10 @@
 import pygame
 import sys
 from asteroid import Asteroid
+from button import print_text
 
 
-def events(sun):
+def events(sun, screen):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()

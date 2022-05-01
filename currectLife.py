@@ -7,7 +7,7 @@ class Life:
         self.screen = screen
         self.screen_rect = screen.get_rect()
         self.stats = stats
-        self.text_color = (100, 0, 0)
+        self.text_color = (200, 0, 0)
         self.font = pygame.font.SysFont(None, 100)
         self.image_life()
 

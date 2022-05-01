@@ -24,10 +24,11 @@ class Button:
             pygame.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
             print_text(massage, x, y, self.screen)
 
-            if click[0] == 1 and action is not None:
+            if click[0] == 1:
                 pygame.mixer.Sound.play(self.button_sound)
+                pygame.time.delay(300)
                 if action is not None:
-                    if action == quit ():
+                    if action == quit:
                         pygame.quit()
                         quit()
                     else:

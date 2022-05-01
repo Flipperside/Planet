@@ -1,4 +1,1 @@
-import pygame
-
-class Menu:
-    def __init__(self):
+print ('hello\n world')
