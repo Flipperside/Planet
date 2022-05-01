@@ -4,7 +4,7 @@ from asteroid import Asteroid
 from button import print_text
 
 
-def events(sun, screen):
+def events(sun):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -42,8 +42,10 @@ def spawn(time, screen, asteroids):
         asteroids.add(new_aster)
 
 
-def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button):
-    screen.fill(bg_color)
+def update(bg_menu, screen, asteroids, sun, planet, stats, hp, hearts):
+    screen.blit(bg_menu, (0, 0))
+    print_text('Очки', 20, 10, screen, (255, 255, 255))
+    print_text(str(stats.score), 165, 10, screen, (255, 255, 255))
     hp.show_life()
     for asteroid in asteroids.sprites():
         asteroid.output()
@@ -55,7 +57,8 @@ def update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button):
 
 def update_asteroid(asteroids, sun, planet, stats, hp):
     asteroids.update()
-    pygame.sprite.spritecollide(sun, asteroids, True)
+    if pygame.sprite.spritecollide(sun, asteroids, True):
+        stats.score += 10
     if pygame.sprite.spritecollide(planet, asteroids, True):
         stats.life -= 1
         hp.image_life()

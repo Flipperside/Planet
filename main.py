@@ -8,14 +8,14 @@ from currectLife import Life
 from hearts import Hearts
 from button import Button
 from button import print_text
-import sys
 
 
 FPS = 300
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
-bg_menu = pygame.image.load('images/Menu.jpg')
+bg_menu = pygame.image.load('images/Background.jpg')
 pygame.display.set_caption('Space battle')
+destroy = pygame.image.load('images/Destroy.png')
 
 
 def show_menu():
@@ -37,9 +37,6 @@ def show_menu():
 
         pygame.display.update()
         clock.tick(FPS)
-
-
-
 
 
 def rules():
@@ -70,7 +67,8 @@ def loose():
             if event.type == pygame.QUIT:
                 sys.exit()
         screen.blit(bg_menu, (0, 0))
-        print_text('Вы проиграли!', 790, 340, screen, (255, 255, 255))
+        screen.blit(destroy, (760, 320))
+        print_text('Вы проиграли!', 790, 270, screen, (255, 255, 255))
         menu_b.draw(590, 540, 'Меню', show_menu)
         again_b.draw(1200, 540, 'Заново', run)
         pygame.display.update()
@@ -79,26 +77,29 @@ def loose():
 
 def run():
     pygame.init()
-    bg_color = (0, 0, 0)
     hearts = Hearts(screen)
     planet = Planet(screen)
     sun = Sun(screen)
     asteroids = Group()
     stats = Stats()
     hp = Life(screen, stats)
-    button = Button(100, 50, screen)
     time = 0
-
     while True:
         time += 1
         Control.spawn(time, screen, asteroids)
-        Control.events(sun, screen)
+        Control.events(sun)
         sun.update_sun()
         Control.update_asteroid(asteroids, sun, planet, stats, hp)
-        Control.update(bg_color, screen, asteroids, sun, planet, stats, hp, hearts, button)
+        Control.update(bg_menu, screen, asteroids, sun, planet, stats, hp, hearts)
         clock.tick(FPS)
+        pygame.display.flip()
         if stats.life == 0:
             loose()
+        if stats.life == 2:
+            planet.image = pygame.image.load('images/Planet2.png')
+        if stats.life == 1:
+            planet.image = pygame.image.load('images/Planet3.png')
+        print(sun.speed)
 
 
 show_menu()

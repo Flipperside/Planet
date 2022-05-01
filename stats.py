@@ -5,7 +5,7 @@ class Stats:
 
     def __init__(self):
         self.life = 3
+        self.score = 0
 
     def output(self):
         self.screen.blit(self.image, self.rect)
-
