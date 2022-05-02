@@ -8,7 +8,6 @@ from currectLife import Life
 from hearts import Hearts
 from button import Button
 from button import print_text
-from particle import Particle
 import sys
 import random
 

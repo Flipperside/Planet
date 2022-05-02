@@ -46,7 +46,13 @@ def update(bg_menu, screen, asteroids, sun, planet, stats, hp, hearts):
     screen.blit(bg_menu, (0, 0))
     print_text('Очки', 20, 10, screen, (255, 255, 255))
     print_text(str(stats.score), 165, 10, screen, (255, 255, 255))
+    print_text('Рекорд', 380, 10, screen, (255, 255, 255))
+    print_text(str(stats.high_score), 600, 10, screen, (255, 255, 255))
+    with open('score.txt', 'w') as f:
+        f.write(str(stats.high_score))
     hp.show_life()
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
     for asteroid in asteroids.sprites():
         asteroid.output()
     planet.output()
